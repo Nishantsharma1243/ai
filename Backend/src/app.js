@@ -4,14 +4,11 @@ const app = express();
 const aiRoutes = require('./routes/ai.routes')
 const cors = require('cors')
 
-app.use(cors())
-const corsConfig ={
-    origin:process.env.Client_URL,
-    credentials:true,
-    method:["GET","POST","DELETE"],
-}
-app.options("",cors(corsConfig));
-app.use(cors(corsConfig));
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Change this to your deployed frontend URL
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
