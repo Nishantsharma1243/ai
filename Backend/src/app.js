@@ -1,8 +1,10 @@
+const cors = require('cors')
 const express = require('express')
-require('dotenv').config();
+
 const app = express();
 const aiRoutes = require('./routes/ai.routes')
-const cors = require('cors')
+
+require('dotenv').config();
 
 app.use(cors({
     origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Change this to your deployed frontend URL
